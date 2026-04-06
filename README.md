@@ -19,10 +19,12 @@
 ![Article](screenshots/article-page.png)
 
 ## 👨‍💻 My Role
-- Built full Drupal website
-- Created content types (News, Categories)
-- Configured SEO (meta tags, sitemap)
-- Setup multilingual system
+- Designed and developed a complete Drupal 10 news blog website from scratch 
+- Created and managed custom content types such as News, Categories, and Tags 
+- Configured SEO modules including meta tags, XML sitemap, and clean URL structure 
+- Implemented multilingual functionality (English, Hindi, Marathi) for better reach 
+- Customized themes and improved UI for better user experience 
+- Managed site configuration, performance optimization, and content workflow 
 
 ## ⚙️ Setup Instructions
 
