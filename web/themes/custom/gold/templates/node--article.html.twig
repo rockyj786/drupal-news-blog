@@ -1,0 +1,49 @@
+{#
+  Template for Article content type.
+  Save as node--article.html.twig
+#}
+<div class="container py-3">
+  <div class="row">
+    <!-- Left Content -->
+    <div class="col-lg-8">
+      <div class="article-content">
+        {% if content.field_image %}
+          <div class="article-image">
+            {{ content.field_image }}
+          </div>
+        {% endif %}
+
+        <div class="article-meta">
+          <div class="text-muted">
+            {% if content.field_categories %}
+              {{ content.field_categories }}
+            {% endif %}
+            /
+            {{ node.created.value|date("F d, Y") }}
+          </div>
+        </div>
+
+        <h2 class="article-title">{{ label }}</h2>
+
+        <div class="article-body">
+          {{ content.body }} 
+        </div>
+        {% if content.field_tags %}
+        <div class="post-tags clearfix mt-3">
+           <strong>Tags:</strong>
+             <div class="tags-list d-inline-block">
+               {{ content.field_taxonomy_keywords }}
+             </div>
+         </div>
+         {% endif %}
+      </div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="col-lg-4">
+      {{ drupal_block('block_content:gold_newsletters') }}
+      {{ drupal_block('block_content:gold_followus') }}
+      {{ drupal_block('block_content:gold_ads') }}
+    </div>
+  </div>
+</div>

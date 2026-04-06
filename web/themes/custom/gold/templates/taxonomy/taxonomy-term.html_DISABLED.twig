@@ -1,0 +1,21 @@
+{#
+  Safe taxonomy term template (no custom objects)
+#}
+
+<div class="container py-4">
+
+  <h1 class="h3 mb-3 text-primary">{{ name }}</h1>
+
+  {% if content.description %}
+    <div class="text-muted mb-3">
+      {{ content.description }}
+    </div>
+  {% endif %}
+
+ <!-- Load your category listing view --> 
+ <div> 
+ {{ drupal_view('category_listing', 'page_1') }} 
+ </div>
+
+</div>
+

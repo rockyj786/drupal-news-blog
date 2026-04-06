@@ -1,0 +1,18 @@
+<article class="article-teaser d-flex mb-4 border-bottom pb-3">
+  {% if content.field_blog_image is not empty %}
+    <div class="teaser-image me-3" style="width: 35%;">
+      {{ content.field_blog_image }}
+    </div>
+  {% endif %}
+  <div class="teaser-body">
+    <h2 class="h5"><a href="{{ url }}">{{ label }}</a></h2>
+    <div class="text-muted mb-1">
+      {{ node.created.value|date('F d, Y') }}
+    </div>
+    <div class="teaser-summary">
+      {{ content.body|render|striptags|trim|slice(0, 200) ~ '…' }}
+    </div>
+    <a href="{{ url }}" class="btn btn-sm btn-outline-secondary mt-2">Read more</a>
+  </div>
+</article>
+

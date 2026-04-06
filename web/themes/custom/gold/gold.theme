@@ -1,0 +1,46 @@
+<?php
+
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ */
+function gold_preprocess_breadcrumb(array &$variables) {
+
+  // If breadcrumb already exists, do nothing.
+  if (!empty($variables['breadcrumb'])) {
+    return;
+  }
+
+  $breadcrumb = [];
+
+  // 1. Home
+  $breadcrumb[] = Link::fromTextAndUrl(t('Home'), Url::fromRoute('<front>'))->toRenderable();
+
+  // 2. Taxonomy term pages
+  $route_match = \Drupal::routeMatch();
+  $term = $route_match->getParameter('taxonomy_term');
+
+  if ($term && $term instanceof \Drupal\taxonomy\TermInterface) {
+
+    // Parent term (optional)
+    if ($term->parent->target_id) {
+      $parent = \Drupal\taxonomy\Entity\Term::load($term->parent->target_id);
+      if ($parent) {
+        $breadcrumb[] = Link::fromTextAndUrl(
+          $parent->label(),
+          Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $parent->id()])
+        )->toRenderable();
+      }
+    }
+
+    // Current term (no link)
+    $breadcrumb[] = [
+      '#markup' => $term->label(),
+    ];
+  }
+
+  // Assign breadcrumb back
+  $variables['breadcrumb'] = $breadcrumb;
+}

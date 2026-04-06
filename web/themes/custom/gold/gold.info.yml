@@ -1,0 +1,33 @@
+name: Gold
+type: theme
+base theme: stable9
+description: My custom theme
+core_version_requirement: ^10 || ^11
+version: VERSION
+libraries:
+ - gold/global-style
+
+regions:
+  logo: Logo
+  top_image: Top Image
+  content: 'Content'
+  after_content: After Content
+  navbar: Navbar 
+  top_news_slider: Top news slider
+  main_slider: Main slider
+  categories: Categories
+  featured: Featured
+  business: Business
+  technology: Technology
+  entertainment: Entertainment
+  sports: Sports
+  popular: Popular
+  trending: Trending
+  footer_first: Footer first
+  footer_second: Footer second
+  footer_third: Footer third
+  footer_fourth: Footer fourth
+  newsletters: Newsletters
+  breadcrumb: Breadcrumb
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'

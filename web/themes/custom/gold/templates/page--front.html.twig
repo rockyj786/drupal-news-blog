@@ -1,0 +1,154 @@
+ {#
+/**
+ * @file
+ * Theme override for a single local action link.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper element.
+ * - link: A rendered link element.
+ *
+ * @see template_preprocess_menu_local_action()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+
+<!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row align-items-center bg-light px-lg-5">
+            <div class="col-12 col-md-8">
+                <div class="d-flex justify-content-between">
+                    <div class="bg-primary text-white text-center py-2" style="width: 100px;">Tranding</div>
+                    <div class="owl-carousel owl-carousel-1 tranding-carousel position-relative d-inline-flex align-items-center ml-3 owl-loaded owl-drag" style="width: calc(100% - 100px); padding-left: 90px;">
+                         
+                         {# ✅ VIEW OUTPUT COMES HERE #}
+                        {{ drupal_view('first_slider', 'trending_top_bar') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-right d-none d-md-block">
+                {{ "now"|date("l, F d, Y") }}
+            </div> 
+        </div>
+        <div class="row align-items-center py-2 px-lg-5">
+            <div class="col-lg-4">
+                {{ page.logo }}
+            </div>
+            <div class="col-lg-8 text-center text-lg-right">
+                {{ page.top_image}}
+            </div>
+        </div>
+    </div>
+<!-- Topbar End -->
+<!-- Navbar Start -->
+    <div class="container-fluid p-0 mb-3">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-2 py-lg-0 px-lg-5">
+            <a href="" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">News</span>Room</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse" >{{ page.navbar}}
+                
+            </div>
+        </nav>
+    </div>
+<!-- Navbar End -->
+<!-- Top News Slider Start -->
+     
+    {{ page.top_news_slider }}    
+               
+<!-- Top News Slider Start -->
+
+{# /.layout-container #}
+<!-- Main News Slider Start -->
+    <div class="container-fluid py-3">
+        <div class="container">
+            <div class="row">
+               <div class="col-lg-8">{{ page.main_slider }}</div>
+               <div class="col-lg-4">{{ page.categories }}</div>
+            </div>
+        </div>
+    </div>
+<!-- Main News Slider End -->
+
+<!-- Main Featured Start -->
+    <div class="container-fluid py-3">
+        <div class="container">{{ page.featured }}</div>
+    </div>
+<!-- Main Featured End -->
+
+
+<!-- Main Business & technology Start -->
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 py-3">
+                {{ page.business }}
+            </div>
+            <div class="col-lg-6 py-3">
+               {{ page.technology }}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Business & technology End -->
+
+<!-- Main Entertainment & Sports Start -->
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 py-3">
+                {{ page.entertainment }}
+            </div>
+            <div class="col-lg-6 py-3">
+                {{ page.sports }}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Entertainment & Sports End -->
+
+
+<!-- Main Popular & social media Start -->
+   <!-- News With Sidebar Start -->
+    <div class="container-fluid py-3">
+        <div class="container">
+            <div class="row">  
+               {# LEFT: Popular view (8 cols) #}
+                <main class="col-lg-8 col-md-8">
+                    {# Option A: render a Views block placed via Block Layout #}
+                    {{ page.popular }}  
+
+                    {# Option B: or render direct via drupal_view() #}
+                    {# {{ drupal_view('first_slider','popular') }} #}
+                </main>
+
+                {# RIGHT: Newsletter / Sidebar (4 cols) #}
+                <aside class="col-lg-4 col-md-4">
+                    {% if page.sidebar_first %}
+                    {{ page.sidebar_first }}
+                    {% endif %}
+                </aside>
+               
+                
+            
+            </div>
+        </div>
+    </div>
+<!-- Main opular & social media End -->
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-light pt-5 px-sm-3 px-md-5">
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5">{{ page.footer_first }}</div>
+        <div class="col-lg-3 col-md-6 mb-5">{{ page.footer_second }}</div>
+        <div class="col-lg-3 col-md-6 mb-5">{{ page.footer_third }}</div>
+        <div class="col-lg-3 col-md-6 mb-5">{{ page.footer_fourth }}</div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{# Template for each row of category listing #}
+
+<article class="article-teaser d-flex mb-4 border-bottom pb-3">
+
+  {% if fields.field_blog_image is defined and fields.field_blog_image.content is not empty %}
+    <div class="teaser-image me-3 col-md-4">
+      {{ fields.field_blog_image.content }}
+    </div>
+  {% endif %}
+
+  <div class="teaser-body">
+
+    <h2 class="h5">
+      <a href="{{ fields.view_node.content|striptags|trim }}">
+        {{ fields.title.content }}
+      </a>
+    </h2>
+
+    <div class="text-muted mb-1">
+      {{ fields.created.content }}
+    </div>
+
+    <div class="teaser-summary">
+      {% if fields.body.content %}
+        {{ fields.body.content|striptags|slice(0, 200) ~ '…' }}
+      {% else %}
+        <em>No summary available.</em>
+      {% endif %}
+    </div>
+
+    <a href="{{ fields.view_node.content|striptags|trim }}"
+       class="btn btn-sm btn-outline-secondary mt-2">
+       Read more
+    </a>
+
+  </div>
+</article>

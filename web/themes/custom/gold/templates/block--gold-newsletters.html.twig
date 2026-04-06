@@ -1,0 +1,81 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - in_preview: Whether the plugin is being rendered in preview mode.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+<div{{ attributes.addClass('newsletter-block-wrapper') }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h3{{ title_attributes }} class="block-title">{{ label }}</h3>
+  {% endif %}
+  {{ title_suffix }}
+
+  <div class="newsletter-block-content">
+    <!-- Social Follow Start -->
+    <div class="pb-3">
+      <div class="bg-light py-2 px-4 mb-3">
+        <h3 class="m-0">Follow Us</h3>
+      </div>
+      <div class="d-flex mb-3">
+        <a class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background-color:#39569E;" href="#"><small>12,345 Fans</small></a>
+        <a class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background-color:#52AAF4;" href="#"><small>12,345 Followers</small></a>
+      </div>
+      <div class="d-flex mb-3">
+        <a class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background-color:#0185AE;" href="#"><small>12,345 Connects</small></a>
+        <a class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background-color:#C8359D;" href="#"><small>12,345 Followers</small></a>
+      </div>
+      <div class="d-flex mb-3">
+        <a class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background-color:#DC472E;" href="#"><small>12,345 Subscribers</small></a>
+        <a class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background-color:#1AB7EA;" href="#"><small>12,345 Followers</small></a>
+      </div>
+    </div>
+    <!-- Social Follow End -->
+
+    <!-- Newsletter Start -->
+    <div class="pb-3">
+      <div class="bg-light py-2 px-4 mb-3">
+        <h3 class="m-0">Newsletter</h3>
+      </div>
+      <div class="bg-light text-center p-4 mb-3">
+        <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
+        <div class="input-group w-100">
+          <input class="form-control form-control-lg" type="text" placeholder="Your Email">
+          <div class="input-group-append">
+            <button class="btn btn-primary">Sign Up</button>
+          </div>
+        </div>
+        <p><small>Sit eirmod nonumy kasd eirmod</small></p>
+      </div>
+    </div>
+    <!-- Newsletter End -->
+
+    <!-- Ads Start -->
+    <div class="mb-3 pb-3">
+      <a href="#"><img class="img-fluid" src="/themes/custom/gold/images/news-500x280-4.jpg" alt="Newsletter Ad"></a>
+    </div>
+    <!-- Ads End -->
+  </div>
+</div>

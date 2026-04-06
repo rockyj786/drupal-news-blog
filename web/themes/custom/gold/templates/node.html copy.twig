@@ -1,0 +1,161 @@
+{#
+  node--article.html.twig
+  Custom content template for Article content type
+#}
+
+
+<!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row align-items-center bg-light px-lg-5">
+            <div class="col-12 col-md-8">
+                <div class="d-flex justify-content-between">
+                    <div class="bg-primary text-white text-center py-2" style="width: 100px;">Tranding</div>
+                    <div class="owl-carousel owl-carousel-1 tranding-carousel position-relative d-inline-flex align-items-center ml-3 owl-loaded owl-drag" style="width: calc(100% - 100px); padding-left: 90px;">
+                        
+                        
+                    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1305px, 0px, 0px); transition: all 0s ease 0s; width: 3918px;"><div class="owl-item cloned" style="width: 652.992px;"><div class="text-truncate"><a class="text-secondary" href="">Labore sit justo amet eos sed, et sanctus dolor diam eos</a></div></div><div class="owl-item cloned" style="width: 652.992px;"><div class="text-truncate"><a class="text-secondary" href="">Gubergren elitr amet eirmod et lorem diam elitr, ut est erat Gubergren elitr amet eirmod et lorem diam elitr, ut est erat</a></div></div><div class="owl-item active" style="width: 652.992px;"><div class="text-truncate"><a class="text-secondary" href="">Labore sit justo amet eos sed, et sanctus dolor diam eos</a></div></div><div class="owl-item" style="width: 652.992px;"><div class="text-truncate"><a class="text-secondary" href="">Gubergren elitr amet eirmod et lorem diam elitr, ut est erat Gubergren elitr amet eirmod et lorem diam elitr, ut est erat</a></div></div><div class="owl-item cloned" style="width: 652.992px;"><div class="text-truncate"><a class="text-secondary" href="">Labore sit justo amet eos sed, et sanctus dolor diam eos</a></div></div><div class="owl-item cloned" style="width: 652.992px;"><div class="text-truncate"><a class="text-secondary" href="">Gubergren elitr amet eirmod et lorem diam elitr, ut est erat Gubergren elitr amet eirmod et lorem diam elitr, ut est erat</a></div></div></div></div><div class="owl-nav"><div class="owl-prev"><i class="fa fa-angle-left"></i></div><div class="owl-next"><i class="fa fa-angle-right"></i></div></div><div class="owl-dots disabled"></div></div>
+                </div>
+            </div>
+            <div class="col-md-4 text-right d-none d-md-block">
+                Monday, January 01, 2045
+            </div>
+        </div>
+        <div class="row align-items-center py-2 px-lg-5">
+            <div class="col-lg-4">
+                {{ drupal_region('logo') }}
+            </div>
+            <div class="col-lg-8 text-center text-lg-right">
+                {{ drupal_region('top_image')}}
+            </div>
+        </div>
+    </div>
+<!-- Topbar End -->
+<!-- Navbar Start -->
+    <div class="container-fluid p-0 mb-3">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-2 py-lg-0 px-lg-5">
+            <a href="" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">News</span>Room</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse" >{{ drupal_region('navbar')}}
+                
+            </div>
+        </nav>
+    </div>
+<!-- Navbar End -->   
+
+
+<div class="container-fluid py-3">
+  <div class="container">
+    <div class="row">
+    Test3
+      {% if node.bundle in ['article', 'blog'] %}
+        <div class="breadcrumb-wrapper py-2 mb-3">
+           {{ drupal_region('breadcrumb') }}
+        </div>
+        {% endif %}
+     </div>
+     <div class="row">
+      <!-- ================= LEFT CONTENT (Main Article) ================= -->
+      <div class="col-lg-8">
+        <article class="single-article">
+         
+          {# --- Featured Image --- #}
+          {% if content.field_blog_image is not empty %}
+            <div class="position-relative mb-3 ">
+              
+              {% set image = node.field_blog_image.entity.fileuri %}
+{% if image %}
+  <img src="{{ image|image_style('large') }}" alt="{{ node.title.value }}" class="img-fluid w-100">
+{% endif %}
+            </div>
+          {% endif %}
+
+          {# --- Article Meta (Category + Date) --- #}
+          <div class="mb-3" style="font-size: 14px;">
+            <span class="text-danger font-weight-bold">{{ content.field_categories }}</span>
+            <span class="px-2">/</span>
+            <span>{{ node.created.value|date("F d, Y") }}</span>
+          </div>
+
+          {# --- Article Title --- #}
+          <h1 class="mb-3 font-weight-bold">{{ label }}</h1>
+
+          {# --- Body Content --- #}
+          <div class="article-body mb-4">
+            {{ content.body }}
+          </div>
+          
+          {% if node.field_taxonomy_keywords is not empty %}
+          <div class="d-flex flex-wrap m-n1">
+             {% for item in node.field_taxonomy_keywords %}
+            <a class="btn btn-sm btn-outline-secondary m-1"
+              href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': item.entity.id()}) }}"
+              title="{{ item.entity.label }}">
+              {{ item.entity.label }}
+            </a>
+            {% endfor %}
+          </div>
+          {% endif %}
+          
+                  
+          {% if node.bundle == 'blog' %}
+          <div class="after-content mt-4">
+             {{ drupal_region('after_content') }}
+          </div> 
+          {% endif %}
+
+     
+        </article>
+      </div>
+
+      <!-- ================= RIGHT SIDEBAR ================= -->
+      <div class="col-lg-4">
+
+        <!-- Newsletter Widget -->
+        <div class="bg-light py-4 px-3 mb-4 text-center rounded">
+          <h4 class="font-weight-bold mb-3">Newsletter</h4>
+          <p class="mb-3">Subscribe to get the latest news directly in your inbox.</p>
+          <form>
+            <input type="email" class="form-control mb-2" placeholder="Enter your email" required>
+            <button class="btn btn-danger w-100">Subscribe</button>
+          </form>
+        </div>
+
+        <!-- Follow Us Widget -->
+        <div class="bg-light py-4 px-3 mb-4 text-center rounded">
+          <h4 class="font-weight-bold mb-3">Follow Us</h4>
+          <div class="d-flex justify-content-center">
+            <a class="btn btn-outline-secondary btn-sm mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-outline-secondary btn-sm mx-1" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-outline-secondary btn-sm mx-1" href="#"><i class="fab fa-instagram"></i></a>
+            <a class="btn btn-outline-secondary btn-sm mx-1" href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+
+
+        <!-- Advertisement (optional) -->
+        <div class="bg-light py-4 px-3 text-center rounded">
+          <h4 class="font-weight-bold mb-3">Advertisement</h4>
+          <img src="/themes/custom/gold/images/ad-placeholder.jpg" alt="Ad" class="img-fluid rounded">
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-light pt-5 px-sm-3 px-md-5">
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5">{{ drupal_region('footer_first') }}</div>
+        <div class="col-lg-3 col-md-6 mb-5">{{ drupal_region('footer_second') }}</div>
+        <div class="col-lg-3 col-md-6 mb-5">{{ drupal_region('footer_third') }}</div>
+        <div class="col-lg-3 col-md-6 mb-5">{{ drupal_region('footer_fourth') }}</div>
+    </div>
+</div>

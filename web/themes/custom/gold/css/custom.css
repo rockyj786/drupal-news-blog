@@ -1,0 +1,27 @@
+ .text-primary {
+  color: #ED1C24 !important;
+}
+
+a.text-primary:hover, a.text-primary:focus {
+  color: #af0e14 !important;
+}
+
+.text-secondary {
+  color: #6c757d !important;
+}
+
+a.text-secondary {
+  color: #6c757d !important;
+}
+a.text-secondary:hover, a.text-secondary:focus {
+  color: #494f54 !important;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+a.text-success:hover, a.text-success:focus {
+  color: #19692c !important;
+}
+
